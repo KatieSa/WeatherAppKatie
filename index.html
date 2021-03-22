@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homework week5 KatieChowaniec</title>
+
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="src/styles.css">
+
+    <script src="src/index.js"></script>
+    
+</head>
+
+<body>
+
+    <div class="container rounded-3 shadow-lg p-5 mt-5 bg-white text-center" style="max-width: 800px;">
+
+
+        <div class="row pb-1">
+            <div class="col-md-6">
+
+
+                <div class="weather-icon">
+                    <i class="fas fa-sun"></i>
+
+
+                </div>
+
+
+            </div>
+            <div class="col-md-6">
+
+
+                <h1 id="locationName" class="text-center">
+                    VALENCIA
+                </h1>
+                <h2 class="text-center">
+                    
+                    
+                    <span id="temperature">23</span>°<span id="temperatureFormat">C</span>
+
+
+                </h2>
+                <p id="todayDate">
+                    28 February 2021
+                </p>
+
+                <a href="#" id="convert">Convert to Farenheit</a>
+
+                <br>
+                <br>
+                
+                <p id="humidity">
+                    Humidity: 66%
+                    <br>
+                    Wind: 5 km/h
+                 </p>
+
+
+
+            </div>
+        </div>
+
+        <hr>
+        <div class="row">
+
+            <div class="col col-md-2">
+                <div class="card">
+                    <div class="card-body">
+
+
+
+
+                        <h5 class="card-title fs-4">MON</h5>
+
+                        <h6 class="card-subtitle mb-2 fw-bold">17°C</h6>
+                        <div class="weather-icon">
+                            <i class="fas fa-cloud-sun"></i>
+                        </div>
+
+                        <p class="card-text">Cloudy Day</p>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col col-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title fs-4">TUE</h5>
+                        <h6 class="card-subtitle mb-2 fw-bold">14°C</h6>
+                        <div class="weather-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+
+                        <p class="card-text">Windy Day</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col col-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title fs-4">WED</h5>
+                        <h6 class="card-subtitle mb-2 fw-bold">13°C</h6>
+                        <div class="weather-icon">
+                            <i class="fas fa-cloud-sun-rain"></i>
+                        </div>
+
+                        <p class="card-text">Rainy Day</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col col-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title fs-4">THU</h5>
+                        <h6 class="card-subtitle mb-2 fw-bold">13°C</h6>
+                        <div class="weather-icon">
+                            <i class="fas fa-cloud-rain"></i>
+                        </div>
+
+                        <p class="card-text">Rainy Day</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col col-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title fs-4">FRI</h5>
+                        <h6 class="card-subtitle mb-2 fw-bold">13°C</h6>
+                        <div class="weather-icon">
+                            <i class="fas fa-cloud-rain"></i>
+                        </div>
+
+                        <p class="card-text">Rainy Day</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col col-md-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title fs-4">SAT</h5>
+                        <h6 class="card-subtitle mb-2 fw-bold">13°C</h6>
+                        <div class="weather-icon">
+                            <i class="fas fa-cloud-showers-heavy"></i>
+                        </div>
+
+                        <p class="card-text">Rainy Day</p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <form>
+          <div class="row mt-5">
+            <div class="col-sm-8">
+              <input type="text" placeholder="Location" class="form-control" id="locationInput" required>
+            </div>
+            <div class="col-sm-4">
+                <button type="submit" class="btn btn-primary btn-block">Search</button>
+                <button type="button" id="geolocation" class="btn btn-secondary btn-block">Location</button>   
+    
+            </div>
+          </div>
+          
+        </form>
+
+        <div class="gitHub">
+        <a href="#" target="_blank">Open-source code by Katie</a>
+        </div>
+
+    </div>
+            
+
+
+    
+</body>
+
+</html>
+

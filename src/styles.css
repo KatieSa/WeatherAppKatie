@@ -1,0 +1,47 @@
+body {
+  font-family: Montserrat, sans-serif;
+  background: linear-gradient(to top, #7a93b8, #5a7eb4 30%, #114797);
+  background-attachment: fixed;
+  margin-top: 25px;
+  margin-bottom: 40px;
+}
+
+h2{
+  font-size:400%;
+}
+
+h3{
+  font size:200%;
+}
+
+
+.weather-icon{
+  font-size:120px;
+  color:#f8cc3c;
+}
+
+.card .weather-icon{
+  font-size:50px;
+  color:#204f96;
+}
+
+.btn-primary{
+  background:#204f96;
+border-color:transparent;}
+
+  .btn-secondary{
+    background:#F0B000;
+    border-color: transparent}
+
+    .gitHub{  
+      font-family: 'Courier New', Courier, monospace;
+      text-align:left;
+      padding-top:20px;
+    }
+  
+    .gitHub a{
+
+      color: #977d6d;
+      text-decoration: none;
+
+    }
