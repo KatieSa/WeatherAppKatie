@@ -7,13 +7,14 @@ body {
 }
 
 h2{
-  font-size:400%;
+  font-size:300%;
 }
 
 h3{
   font size:200%;
 }
 
+#convert{color:#21529C}
 
 .weather-icon{
   font-size:120px;
@@ -35,13 +36,13 @@ border-color:transparent;}
 
     .gitHub{  
       font-family: 'Courier New', Courier, monospace;
-      text-align:left;
-      padding-top:20px;
+      text-align:center;
+      padding-top:30px;
     }
   
     .gitHub a{
 
-      color: #977d6d;
+      color: #fff;
       text-decoration: none;
 
     }

@@ -1,6 +1,7 @@
 // variable
 let humidity = document.querySelector("#humidity");
 let h1 = document.querySelector("#locationName");
+let todayIcon = document.querySelector("#todayIcon");
 let citySearchForm = document.querySelector("form");
 // variable where temperature need to be shown instead of text
 let temperatureElement = document.querySelector("#temperature");
@@ -8,6 +9,7 @@ let geolocationButton = document.querySelector("#geolocation");
 
 let apiKey = "de355d392425d33ae896129df7b80813";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric`;
+let apiUrlForecast = `https://api.openweathermap.org/data/2.5/forecast?cnt=5&units=metric`;
 
 // listener to citySearchForm -> line 4
 citySearchForm.addEventListener("submit", citySearchHandleSubmit);
@@ -28,8 +30,37 @@ function showTemperature(response) {
   // loaded function changing HTML text to city name
   h1.innerHTML = response.data.name;
 
+
+
+  todayIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png">`;
+
+
   // scroll window back to top
   window.scroll(0, 0);
+
+}
+
+
+function showForecast(response) {
+
+  console.log(response.data);
+
+  let loopCounter = 1;
+  response.data.list.forEach(function (day) {
+
+
+
+    //alert(`Temperature is ${day.main.temp} (${day.weather[0].main}) (https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png)`);
+
+    //$('#forecastDay' + loopCounter + ' .card-title').
+
+    let temp = Math.floor(day.main.temp);
+    $('#forecastDay' + loopCounter + ' .card-subtitle').text(`${temp}°C`);
+    $('#forecastDay' + loopCounter + ' .weather-icon').html(`<img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png">`);//@2x
+
+    loopCounter++;
+  });
+
 }
 
 // function which get position from function 'getCurrentGeolocation'
@@ -44,6 +75,14 @@ function showPosition(position) {
       `${apiUrl}&lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}`
     )
     .then(showTemperature);
+
+
+  axios
+    .get(
+      `${apiUrlForecast}&lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}`
+    )
+    .then(showForecast);
+
 }
 
 // After writing the city name in form this function will connect to API with city name and call function showTemperature with result
@@ -55,6 +94,14 @@ function citySearchHandleSubmit(event) {
   axios
     .get(`${apiUrl}&q=${locationInput}&appid=${apiKey}`)
     .then(showTemperature);
+
+
+  axios
+    .get(
+      `${apiUrlForecast}&q=${locationInput}&appid=${apiKey}`
+    )
+    .then(showForecast);
+
 
   //h1.innerHTML = locationInput;
   //window.scroll(0, 0);
@@ -128,7 +175,7 @@ function convertFormat(event) {
     temperatureFormat = "F";
 
     document.querySelector("#temperature").innerHTML = temperature;
-    document.querySelector("a#convert").innerHTML = "Convert to Celsius";
+    document.querySelector("a#convert").innerHTML = "C";
   } else {
     // convert to C
 
@@ -136,7 +183,7 @@ function convertFormat(event) {
     temperatureFormat = "C";
 
     document.querySelector("#temperature").innerHTML = Math.floor(temperature);
-    document.querySelector("a#convert").innerHTML = "Convert to Farenheit";
+    document.querySelector("a#convert").innerHTML = "F";
   }
 
   document.querySelector("#temperatureFormat").innerHTML = temperatureFormat;
