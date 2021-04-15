@@ -11,6 +11,45 @@ let apiKey = "de355d392425d33ae896129df7b80813";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric`;
 let apiUrlForecast = `https://api.openweathermap.org/data/2.5/forecast?cnt=5&units=metric`;
 
+
+
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+
+let daysShort = [
+  "SUN",
+  "MON",
+  "TUE",
+  "WED",
+  "THU",
+  "FRI",
+  "SAT"
+];
+
+let months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December"
+];
+
+
+
 // listener to citySearchForm -> line 4
 citySearchForm.addEventListener("submit", citySearchHandleSubmit);
 
@@ -45,20 +84,35 @@ function showForecast(response) {
 
   console.log(response.data);
 
+  let date = new Date();
   let loopCounter = 1;
+  let loopDayCounter = date.getDay() + 1;
   response.data.list.forEach(function (day) {
 
 
 
     //alert(`Temperature is ${day.main.temp} (${day.weather[0].main}) (https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png)`);
 
+    /*
+        let date = new Date();
+        let currentDay = days[date.getDay()];
+    
+        let formattedDate = `${currentDay}`;
+    */
+
+
+    if (loopDayCounter > 6) loopDayCounter = 0;
+    let currentDay = daysShort[loopDayCounter];
+
     //$('#forecastDay' + loopCounter + ' .card-title').
+    $('#forecastDay' + loopCounter + ' .card-title').text(`${currentDay}`);
 
     let temp = Math.floor(day.main.temp);
     $('#forecastDay' + loopCounter + ' .card-subtitle').text(`${temp}°C`);
     $('#forecastDay' + loopCounter + ' .weather-icon').html(`<img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png">`);//@2x
 
     loopCounter++;
+    loopDayCounter++;
   });
 
 }
@@ -87,6 +141,7 @@ function showPosition(position) {
 
 // After writing the city name in form this function will connect to API with city name and call function showTemperature with result
 function citySearchHandleSubmit(event) {
+
   event.preventDefault();
 
   let locationInput = document.querySelector("#locationInput").value;
@@ -117,30 +172,6 @@ geolocationButton.addEventListener("click", getCurrentGeolocation);
 let p = document.querySelector("#todayDate");
 
 function formatDate() {
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-
-  let months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
 
   let date = new Date();
   let currentYear = date.getFullYear();
@@ -188,3 +219,23 @@ function convertFormat(event) {
 
   document.querySelector("#temperatureFormat").innerHTML = temperatureFormat;
 }
+
+
+
+
+
+// first page open.
+
+$(function () {
+
+  axios
+    .get(`${apiUrl}&q=Barcelona&appid=${apiKey}`)
+    .then(showTemperature);
+
+  axios
+    .get(
+      `${apiUrlForecast}&q=Barcelona&appid=${apiKey}`
+    )
+    .then(showForecast);
+
+})
