@@ -23,16 +23,6 @@ let days = [
   "Saturday"
 ];
 
-let daysShort = [
-  "SUN",
-  "MON",
-  "TUE",
-  "WED",
-  "THU",
-  "FRI",
-  "SAT"
-];
-
 let months = [
   "January",
   "February",
@@ -64,14 +54,16 @@ function showTemperature(response) {
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
 
   // loaded function changing HTML text into different text -> wind, humidity
-  humidity.innerHTML = `${response.data.main.humidity}% humidity<br>${response.data.wind.speed}km/h wind`;
+  humidity.innerHTML = `<span>${response.data.main.humidity}%</span> humidity<br><span>${response.data.wind.speed}</span> km/h wind`;
 
   // loaded function changing HTML text to city name
   h1.innerHTML = response.data.name;
 
 
 
-  todayIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png">`;
+  // todayIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png">`;
+  todayIcon.innerHTML = `<img src="img/${response.data.weather[0].icon}.png">`;
+
 
 
   // scroll window back to top
@@ -102,14 +94,16 @@ function showForecast(response) {
 
 
     if (loopDayCounter > 6) loopDayCounter = 0;
-    let currentDay = daysShort[loopDayCounter];
+    let currentDay = days[loopDayCounter];
 
     //$('#forecastDay' + loopCounter + ' .card-title').
     $('#forecastDay' + loopCounter + ' .card-title').text(`${currentDay}`);
 
     let temp = Math.floor(day.main.temp);
     $('#forecastDay' + loopCounter + ' .card-subtitle').text(`${temp}°C`);
-    $('#forecastDay' + loopCounter + ' .weather-icon').html(`<img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png">`);//@2x
+    $('#forecastDay' + loopCounter + ' .card-text').text(`${day.weather[0].main}`);
+    //$('#forecastDay' + loopCounter + ' .weather-icon').html(`<img src="https://openweathermap.org/img/wn/${day.weather[0].icon}.png">`);//@2x
+    $('#forecastDay' + loopCounter + ' .weather-icon').html(`<img style="max-height:75px;padding-left:25px" src="img/${day.weather[0].icon}.png">`);//@2x
 
     loopCounter++;
     loopDayCounter++;
@@ -179,7 +173,7 @@ function formatDate() {
   let currentMonth = months[date.getMonth()];
   let currentDate = date.getDate();
 
-  let formattedDate = `${currentDay}, ${currentMonth} ${currentDate}, ${currentYear}`;
+  let formattedDate = `${currentDay},  ${currentMonth} ${currentDate}, ${currentYear}`;
 
   p.innerHTML = `${formattedDate}`;
 }
