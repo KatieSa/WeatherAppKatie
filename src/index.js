@@ -220,21 +220,17 @@ function convertFormat(event) {
   document.querySelector("#temperatureFormat").innerHTML = temperatureFormat;
 }
 
-
-
-
-
 // first page open.
 
 $(function () {
 
   axios
-    .get(`${apiUrl}&q=Barcelona&appid=${apiKey}`)
+    .get(`${apiUrl}&q=Valencia&appid=${apiKey}`)
     .then(showTemperature);
 
   axios
     .get(
-      `${apiUrlForecast}&q=Barcelona&appid=${apiKey}`
+      `${apiUrlForecast}&q=Valencia&appid=${apiKey}`
     )
     .then(showForecast);
 
