@@ -1,7 +1,9 @@
 body {
   font-family: Montserrat, sans-serif;
   /*ackground: linear-gradient(to top, #7a93b8, #5a7eb4 30%, #114797); */
-  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);
+  /*background: linear-gradient(60deg, rgba(151,114,243) 0%, rgb(252, 112, 155) 100%); */
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgb(252, 112, 155) 100%);
+  
   background-attachment: fixed;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -9,6 +11,7 @@ body {
 
 h1{
   color:white;
+  font-size: 400%;
   text-shadow:5px 5px 5px rgba(0,0,0,0.1);
 }
 h2{
@@ -22,7 +25,7 @@ h3{
   letter-spacing:2px;
 }
 #humidity{
-  color:rgba(255,255,255,0.5);
+  color:rgba(255,255,255,0.6);
   
 }
 #humidity span{
@@ -40,11 +43,11 @@ h3{
 }
 .card-subtitle{font-size:20px}
 .btn-primary{
-  background: #228FBE;
+  background: #FC709B;
 border-color:transparent;}
 
   .btn-secondary{
-    background:#4C48B9;
+    background:#9772F3; #4C48B9;
     border-color: transparent}
 
     .gitHub{  
@@ -58,10 +61,6 @@ border-color:transparent;}
       color: #fff;
       text-decoration: none;
     }
-
-   /* animation waves */
-
-
 
 /* Animation */
 
