@@ -47,7 +47,7 @@ citySearchForm.addEventListener("submit", citySearchHandleSubmit);
 // temperature, city name and humidity
 //
 function showTemperature(response) {
-  console.log(response.data);
+  //console.log(response.data);
 
   // loaded function changing HTML text into different text
   // math.round makes temperature rounded
@@ -61,7 +61,7 @@ function showTemperature(response) {
 
 
 
-  // todayIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png">`;
+  // o todayIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png">`;
   todayIcon.innerHTML = `<img src="img/${response.data.weather[0].icon}.png">`;
 
 
@@ -70,10 +70,9 @@ function showTemperature(response) {
 
 }
 
-
 function showForecast(response) {
 
-  console.log(response.data);
+  //console.log(response.data);
 
   let date = new Date();
   let loopCounter = 1;
@@ -81,21 +80,10 @@ function showForecast(response) {
   response.data.list.forEach(function (day) {
 
 
-
-    //alert(`Temperature is ${day.main.temp} (${day.weather[0].main}) (https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png)`);
-
-    /*
-        let date = new Date();
-        let currentDay = days[date.getDay()];
-    
-        let formattedDate = `${currentDay}`;
-    */
-
-
     if (loopDayCounter > 6) loopDayCounter = 0;
     let currentDay = days[loopDayCounter];
 
-    //$('#forecastDay' + loopCounter + ' .card-title').
+
     $('#forecastDay' + loopCounter + ' .card-title').text(`${currentDay}`);
 
     let temp = Math.floor(day.main.temp);
@@ -112,8 +100,8 @@ function showForecast(response) {
 
 // function which get position from function 'getCurrentGeolocation'
 function showPosition(position) {
-  console.log(position.coords.latitude);
-  console.log(position.coords.longitude);
+  //console.log(position.coords.latitude);
+  //console.log(position.coords.longitude);
 
   // function showPosition is connecting with API,
   // when I have DATA from API I call function showTemperature
@@ -142,7 +130,6 @@ function citySearchHandleSubmit(event) {
   axios
     .get(`${apiUrl}&q=${locationInput}&appid=${apiKey}`)
     .then(showTemperature);
-
 
   axios
     .get(
