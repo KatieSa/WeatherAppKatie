@@ -1,9 +1,8 @@
 body {
   font-family: Montserrat, sans-serif;
-  /*ackground: linear-gradient(to top, #7a93b8, #5a7eb4 30%, #114797); */
-  /*background: linear-gradient(60deg, rgba(151,114,243) 0%, rgb(252, 112, 155) 100%); */
-  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgb(252, 112, 155) 100%);
-  
+  /*background: linear-gradient(to top, #7a93b8, #5a7eb4 30%, #114797); */
+  /*background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);*/
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgb(235, 105, 176) 100%);
   background-attachment: fixed;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -14,6 +13,7 @@ h1{
   font-size: 400%;
   text-shadow:5px 5px 5px rgba(0,0,0,0.1);
 }
+
 h2{
   color:rgba(255,255,255,0.75);
   font-size:300%;
@@ -24,43 +24,59 @@ h3{
   font size:200%;
   letter-spacing:2px;
 }
+
 #humidity{
   color:rgba(255,255,255,0.6);
-  
 }
+
 #humidity span{
   color:rgba(255,255,255,0.95);
-  
 }
+
 #convert{
   color:rgba(255,255,255,0.25);
-
   border-left:1px solid rgba(255,255,255,0.15);
   margin-left:10px;
 }
+
 .card-text {
-    opacity: 0.5;
+  opacity: 0.5;
 }
-.card-subtitle{font-size:20px}
+
+.card-subtitle{
+  font-size:20px;
+}
+
 .btn-primary{
   background: #FC709B;
-border-color:transparent;}
+  border-color:transparent;
+}
 
-  .btn-secondary{
-    background:#9772F3; #4C48B9;
-    border-color: transparent}
+.btn-primary:hover{
+  background: #df678b;
+  border-color:transparent;
+}
 
-    .gitHub{  
-      font-family: 'Courier New', Courier, monospace;
-      text-align:center;
-      padding-top:30px;
-    }
+.btn-secondary{
+  background:#9772F3;
+  border-color: transparent;
+}
+
+.btn-secondary:hover{
+  background:#6d51b4;
+  border-color: transparent;
+}
+
+.gitHub{  
+  font-family: 'Courier New', Courier, monospace;
+  text-align:center;
+  padding-top:30px;
+  }
   
-    .gitHub a{
-
-      color: #fff;
-      text-decoration: none;
-    }
+.gitHub a{
+color: #fff;
+text-decoration: none;
+}
 
 /* Animation */
 
@@ -72,25 +88,31 @@ border-color:transparent;}
   min-height:100px;
   max-height:150px;
 }
+
 .parallax > use {
   animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
 }
+
 .parallax > use:nth-child(1) {
   animation-delay: -2s;
   animation-duration: 7s;
 }
+
 .parallax > use:nth-child(2) {
   animation-delay: -3s;
   animation-duration: 10s;
 }
+
 .parallax > use:nth-child(3) {
   animation-delay: -4s;
   animation-duration: 13s;
 }
+
 .parallax > use:nth-child(4) {
   animation-delay: -5s;
   animation-duration: 20s;
 }
+
 @keyframes move-forever {
   0% {
    transform: translate3d(-90px,0,0);

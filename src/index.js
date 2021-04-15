@@ -3,6 +3,7 @@ let humidity = document.querySelector("#humidity");
 let h1 = document.querySelector("#locationName");
 let todayIcon = document.querySelector("#todayIcon");
 let citySearchForm = document.querySelector("form");
+
 // variable where temperature need to be shown instead of text
 let temperatureElement = document.querySelector("#temperature");
 let geolocationButton = document.querySelector("#geolocation");
@@ -10,7 +11,6 @@ let geolocationButton = document.querySelector("#geolocation");
 let apiKey = "de355d392425d33ae896129df7b80813";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric`;
 let apiUrlForecast = `https://api.openweathermap.org/data/2.5/forecast?cnt=5&units=metric`;
-
 
 
 let days = [
@@ -63,7 +63,6 @@ function showTemperature(response) {
 
   // todayIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png">`;
   todayIcon.innerHTML = `<img src="img/${response.data.weather[0].icon}.png">`;
-
 
 
   // scroll window back to top
@@ -150,10 +149,6 @@ function citySearchHandleSubmit(event) {
       `${apiUrlForecast}&q=${locationInput}&appid=${apiKey}`
     )
     .then(showForecast);
-
-
-  //h1.innerHTML = locationInput;
-  //window.scroll(0, 0);
 }
 
 // function which shows your current position
@@ -180,7 +175,7 @@ function formatDate() {
 // function calls Date
 formatDate();
 
-// all below coverting Celsius to Farentheit
+// all below converting Celsius to Farentheit
 let converter = document.querySelector("a#convert");
 
 converter.addEventListener("click", convertFormat);
@@ -219,12 +214,12 @@ function convertFormat(event) {
 $(function () {
 
   axios
-    .get(`${apiUrl}&q=Honolulu&appid=${apiKey}`)
+    .get(`${apiUrl}&q=Valencia&appid=${apiKey}`)
     .then(showTemperature);
 
   axios
     .get(
-      `${apiUrlForecast}&q=Honolulu&appid=${apiKey}`
+      `${apiUrlForecast}&q=Valencia&appid=${apiKey}`
     )
     .then(showForecast);
 
