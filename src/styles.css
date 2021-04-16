@@ -24,6 +24,9 @@ h3{
   font size:200%;
   letter-spacing:2px;
 }
+#todayIcon img{
+max-height: 350px;
+}
 
 #humidity{
   color:rgba(255,255,255,0.6);

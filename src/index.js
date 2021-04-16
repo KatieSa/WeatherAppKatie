@@ -201,12 +201,12 @@ function convertFormat(event) {
 $(function () {
 
   axios
-    .get(`${apiUrl}&q=Taormina&appid=${apiKey}`)
+    .get(`${apiUrl}&q=London&appid=${apiKey}`)
     .then(showTemperature);
 
   axios
     .get(
-      `${apiUrlForecast}&q=Taormina&appid=${apiKey}`
+      `${apiUrlForecast}&q=London&appid=${apiKey}`
     )
     .then(showForecast);
 
